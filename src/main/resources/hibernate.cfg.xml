@@ -16,5 +16,8 @@
         <!-- 1. ToMany [#301848] !-->
         <mapping class="ru.job4j.orm.models.CarModel" />
         <mapping class="ru.job4j.orm.models.CarBrand" />
+        <!-- 2. ManyToMany [#331986] !-->
+        <mapping class="ru.job4j.orm.models.Author" />
+        <mapping class="ru.job4j.orm.models.Book" />
     </session-factory>
 </hibernate-configuration>

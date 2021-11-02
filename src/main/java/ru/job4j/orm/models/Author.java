@@ -6,29 +6,34 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "car_brands")
-public class CarBrand {
+@Table(name = "authors")
+public class Author {
 
     @Id
     @SequenceGenerator(
-            name = "carBrandsIdSeq",
-            sequenceName = "car_brands_id_seq",
+            name = "authorsIdSeq",
+            sequenceName = "authors_id_seq",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carBrandsIdSeq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorsIdSeq")
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<CarModel> models;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "authors_books",
+            joinColumns = @JoinColumn(name = "id_author"),
+            inverseJoinColumns = @JoinColumn(name = "id_book")
+    )
+    private Set<Book> books;
 
-    public CarBrand() {
-        models = new HashSet<>();
+    public Author() {
+        books = new HashSet<>();
     }
 
-    public static CarBrand of(String brandName) {
-        CarBrand b = new CarBrand();
-        b.setName(brandName);
-        return b;
+    public static Author of(String authorName) {
+        Author a = new Author();
+        a.setName(authorName);
+        return a;
     }
 
     public int getId() {
@@ -47,12 +52,12 @@ public class CarBrand {
         this.name = name;
     }
 
-    public void addModel(CarModel m) {
-        models.add(m);
+    public void addBook(Book value) {
+        books.add(value);
     }
 
-    public boolean deleteModel(CarModel m) {
-        return models.remove(m);
+    public boolean deleteBook(Book value) {
+        return books.remove(value);
     }
 
     @Override
@@ -63,10 +68,10 @@ public class CarBrand {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CarBrand carBrand = (CarBrand) o;
+        Author author = (Author) o;
         return
-                id == carBrand.id
-                && Objects.equals(name, carBrand.name);
+                id == author.id
+                && Objects.equals(name, author.name);
     }
 
     @Override
@@ -77,7 +82,7 @@ public class CarBrand {
     @Override
     public String toString() {
         return
-                "CarBrand{"
+                "Author{"
                 + "id=" + id
                 + ", name='" + name + '\''
                 + '}';

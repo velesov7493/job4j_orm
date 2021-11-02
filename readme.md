@@ -13,3 +13,10 @@
 ![screenshot](images/car_models.png)
 1.3. brands-models
 ![screenshot](images/car_brands_car_models.png)
+#### 2. ManyToMany [#331986] ####
+2.1. books
+![screenshot](images/books.png)
+2.2. authors
+![screenshot](images/authors.png)
+2.3. authors_books
+![screenshot](images/authors_books.png)
