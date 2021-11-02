@@ -16,6 +16,8 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carModelsIdSeq")
     private int id;
     private String name;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private CarBrand brand;
 
     public static CarModel of(String modelName) {
         CarModel m = new CarModel();
@@ -39,6 +41,14 @@ public class CarModel {
         this.name = name;
     }
 
+    public CarBrand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(CarBrand brand) {
+        this.brand = brand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -48,14 +58,12 @@ public class CarModel {
             return false;
         }
         CarModel carModel = (CarModel) o;
-        return
-                id == carModel.id
-                && Objects.equals(name, carModel.name);
+        return id == carModel.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id);
     }
 
     @Override

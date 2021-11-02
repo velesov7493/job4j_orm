@@ -18,7 +18,12 @@ public class CarBrand {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carBrandsIdSeq")
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "brand",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
     private Set<CarModel> models;
 
     public CarBrand() {
@@ -49,10 +54,16 @@ public class CarBrand {
 
     public void addModel(CarModel m) {
         models.add(m);
+        m.setBrand(this);
     }
 
-    public boolean deleteModel(CarModel m) {
-        return models.remove(m);
+    public void deleteModel(CarModel m) {
+        models.remove(m);
+        m.setBrand(null);
+    }
+
+    public Set<CarModel> getModels() {
+        return models;
     }
 
     @Override
@@ -64,14 +75,12 @@ public class CarBrand {
             return false;
         }
         CarBrand carBrand = (CarBrand) o;
-        return
-                id == carBrand.id
-                && Objects.equals(name, carBrand.name);
+        return id == carBrand.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id);
     }
 
     @Override
