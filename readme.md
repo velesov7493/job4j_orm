@@ -1,3 +1,4 @@
+[![Build Status](https://app.travis-ci.com/velesov7493/job4j_orm.svg?branch=master)](https://app.travis-ci.com/velesov7493/job4j_orm)
 ## Описание ##
 Это учебный проект, в котором выполнены базовые задачи объектно-реляционного отображения (ORM) с помощью Hibernate.
 #### Технологии проекта ####
