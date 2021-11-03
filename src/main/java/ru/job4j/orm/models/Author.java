@@ -18,7 +18,7 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authorsIdSeq")
     private int id;
     private String name;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "authors_books",
             joinColumns = @JoinColumn(name = "id_author"),

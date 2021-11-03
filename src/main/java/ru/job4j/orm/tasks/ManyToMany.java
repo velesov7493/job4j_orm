@@ -43,6 +43,8 @@ public class ManyToMany {
                 book.addAuthor(author1);
                 s.save(book);
             }
+            books[12].deleteAuthor(author2);
+            s.save(books[12]);
             tx.commit();
             s.close();
         } catch (Exception ex) {
