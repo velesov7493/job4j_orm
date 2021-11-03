@@ -22,7 +22,8 @@ public class LazyInitialization {
             SessionFactory sf = HibernateUtils.getSessionFactory();
             Session s = sf.openSession();
             Transaction tx = s.beginTransaction();
-            brands = s.createQuery("FROM CarBrand").list();
+            String hql = "SELECT DISTINCT b FROM CarBrand b JOIN FETCH b.models";
+            brands = s.createQuery(hql).list();
             tx.commit();
             s.close();
         } catch (Exception ex) {

@@ -22,7 +22,7 @@ public class CarBrand {
             mappedBy = "brand",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     private Set<CarModel> models;
 
