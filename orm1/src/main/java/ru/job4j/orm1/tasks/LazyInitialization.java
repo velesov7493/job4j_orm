@@ -1,13 +1,13 @@
-package ru.job4j.orm.tasks;
+package ru.job4j.orm1.tasks;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.job4j.orm.HibernateUtils;
-import ru.job4j.orm.models.CarBrand;
-import ru.job4j.orm.models.CarModel;
+import ru.job4j.orm1.HibernateUtils;
+import ru.job4j.orm1.models.CarBrand;
+import ru.job4j.orm1.models.CarModel;
 
 import java.util.ArrayList;
 import java.util.List;

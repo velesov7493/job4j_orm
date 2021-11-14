@@ -1,13 +1,13 @@
-package ru.job4j.orm.tasks;
+package ru.job4j.orm1.tasks;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.job4j.orm.HibernateUtils;
-import ru.job4j.orm.models.Author;
-import ru.job4j.orm.models.Book;
+import ru.job4j.orm1.HibernateUtils;
+import ru.job4j.orm1.models.Author;
+import ru.job4j.orm1.models.Book;
 
 public class ManyToMany {
 

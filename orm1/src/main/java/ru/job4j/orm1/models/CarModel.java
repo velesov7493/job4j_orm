@@ -1,4 +1,4 @@
-package ru.job4j.orm.models;
+package ru.job4j.orm1.models;
 
 import javax.persistence.*;
 import java.util.Objects;
