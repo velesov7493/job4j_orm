@@ -19,5 +19,7 @@
         <!-- 2. ManyToMany [#331986] !-->
         <mapping class="ru.job4j.orm1.models.Author" />
         <mapping class="ru.job4j.orm1.models.Book" />
+        <!-- 0. HQL [#6874] !-->
+        <mapping class="ru.job4j.orm1.models.Candidate" />
     </session-factory>
 </hibernate-configuration>
