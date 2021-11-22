@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.job4j.orm1.HibernateUtils;
+import ru.job4j.orm1.DbUtils;
 import ru.job4j.orm1.models.CarBrand;
 import ru.job4j.orm1.models.CarModel;
 
@@ -19,7 +19,7 @@ public class LazyInitialization {
     public static void main(String[] args) {
         List<CarBrand> brands = new ArrayList<>();
         try {
-            SessionFactory sf = HibernateUtils.getSessionFactory();
+            SessionFactory sf = DbUtils.getSessionFactory();
             Session s = sf.openSession();
             Transaction tx = s.beginTransaction();
             String hql = "SELECT DISTINCT b FROM CarBrand b JOIN FETCH b.models";
@@ -29,7 +29,7 @@ public class LazyInitialization {
         } catch (Exception ex) {
             LOG.error("ORM: ошибка выборки данных", ex);
         } finally {
-            HibernateUtils.releaseSessionFactory();
+            DbUtils.releaseSessionFactory();
         }
         for (CarBrand brand : brands) {
             System.out.println(brand);

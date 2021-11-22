@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.job4j.orm1.HibernateUtils;
+import ru.job4j.orm1.DbUtils;
 import ru.job4j.orm1.models.CarBrand;
 import ru.job4j.orm1.models.CarModel;
 
@@ -15,7 +15,7 @@ public class ToMany {
 
     public static void main(String[] args) {
         try {
-            SessionFactory sf = HibernateUtils.getSessionFactory();
+            SessionFactory sf = DbUtils.getSessionFactory();
             Session s = sf.openSession();
             Transaction tx = s.beginTransaction();
             CarBrand brand1 = CarBrand.of("ВАЗ");
@@ -47,7 +47,7 @@ public class ToMany {
         } catch (Exception ex) {
             LOG.error("ORM: ошибка сохранения данных", ex);
         } finally {
-            HibernateUtils.releaseSessionFactory();
+            DbUtils.releaseSessionFactory();
         }
     }
 }

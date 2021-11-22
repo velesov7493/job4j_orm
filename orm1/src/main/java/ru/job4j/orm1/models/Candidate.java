@@ -18,6 +18,12 @@ public class Candidate {
     private String name;
     private int experience;
     private double salary;
+    @OneToOne(
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            orphanRemoval = true, optional = false
+    )
+    @JoinColumn(name = "id_job_library")
+    private JobLibrary jobLibrary;
 
     public Candidate() { }
 
@@ -59,6 +65,14 @@ public class Candidate {
         this.salary = salary;
     }
 
+    public JobLibrary getJobLibrary() {
+        return jobLibrary;
+    }
+
+    public void setJobLibrary(JobLibrary jobLibrary) {
+        this.jobLibrary = jobLibrary;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -86,6 +100,7 @@ public class Candidate {
                 + ", name='" + name + '\''
                 + ", experience=" + experience
                 + ", salary=" + salary
+                + ", jobLibrary='" + jobLibrary.getName() + '\''
                 + '}';
     }
 }
