@@ -18,6 +18,7 @@
     <modules>
         <module>orm1</module>
         <module>orm2</module>
+        <module>itesting</module>
     </modules>
 
     <dependencies>
